@@ -43,10 +43,6 @@ output "nodes_ip" {
 * Update DNS Records
 */
 
-resource "digitalocean_domain" "default" {
-  name = "francrodriguez.com"
-}
-
 # Add an A record to the domain for www.example.com.
 resource "digitalocean_record" "www" {
   domain = digitalocean_domain.default.id
