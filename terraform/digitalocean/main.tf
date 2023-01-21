@@ -36,5 +36,21 @@ resource "digitalocean_droplet" "node" {
  */
 
 output "nodes_ip" {
-  value = digitalocean_droplet.node.*.ipv4_address
+  value = digitalocean_droplet.node.0.ipv4_address
+}
+
+/**
+* Update DNS Records
+*/
+
+resource "digitalocean_domain" "default" {
+  name = "francrodriguez.com"
+}
+
+# Add an A record to the domain for www.example.com.
+resource "digitalocean_record" "www" {
+  domain = digitalocean_domain.default.id
+  type   = "A"
+  name   = "www"
+  value  = digitalocean_droplet.node.0.ipv4_address
 }
