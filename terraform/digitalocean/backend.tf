@@ -3,7 +3,7 @@ terraform {
     hostname = "app.terraform.io"
     organization = "francrodriguez"
     workspaces {
-      name = "francrodriguezcom-infra-digitalocean"
+      name = "francrodriguezcom-infra"
     }
   }
 }
