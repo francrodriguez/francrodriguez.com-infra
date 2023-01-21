@@ -45,7 +45,7 @@ output "nodes_ip" {
 
 # Add an A record to the domain for www.francrodriguez.com.
 resource "digitalocean_record" "www" {
-  domain = digitalocean_domain.default.id
+  domain = "francrodriguez.com"
   type   = "A"
   name   = "www"
   value  = digitalocean_droplet.node.0.ipv4_address
