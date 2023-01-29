@@ -9,10 +9,6 @@ resource "digitalocean_project" "francrordriguezcom-infra" {
   resources = digitalocean_droplet.node.*.urn
 }
 
-/**
-* # key a usar
-*/
-
 data "digitalocean_ssh_key" "one" {
   name = "one"
 }
@@ -22,9 +18,8 @@ data "digitalocean_ssh_key" "one" {
  */
 
 resource "digitalocean_droplet" "node" {
-  count = var.node_count
   image  = "docker-20-04"
-  name   = "node${count.index}"
+  name   = "srv${count.index}"
   region = "fra1"
   size   = "s-1vcpu-1gb"
   vpc_uuid    = "71bbce96-523f-4db9-b06e-f5fff6939df7"
