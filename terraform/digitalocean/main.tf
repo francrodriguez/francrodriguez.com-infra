@@ -18,6 +18,7 @@ data "digitalocean_ssh_key" "one" {
  */
 
 resource "digitalocean_droplet" "node" {
+  count = var.node_count
   image  = "docker-20-04"
   name   = "node${count.index}"
   region = "fra1"
