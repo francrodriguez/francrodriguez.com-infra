@@ -19,7 +19,7 @@ data "digitalocean_ssh_key" "one" {
 
 resource "digitalocean_droplet" "node" {
   image  = "docker-20-04"
-  name   = "srv${count.index}"
+  name   = "node${count.index}"
   region = "fra1"
   size   = "s-1vcpu-1gb"
   vpc_uuid    = "71bbce96-523f-4db9-b06e-f5fff6939df7"
