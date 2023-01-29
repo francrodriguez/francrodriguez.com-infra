@@ -1,0 +1,5 @@
+[local]
+local_machine ansible_connection=local ansible=localhost
+
+[srv]
+www.francrodriguez.com ansible_user=root

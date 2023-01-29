@@ -1,0 +1,26 @@
+---
+- hosts: local
+  tasks:
+    - name: load ssh key
+      shell: |
+         ssh-add ~/.ssh/id_rsa
+
+- hosts: monitor
+  name: deploy-monitor
+
+  tasks:
+    - name: Create user
+      ansible.builtin.user:
+        name: franc
+        group: sudo
+    - name: clone git repo
+      ansible.builtin.git:
+        repo: git@github.com:francrodriguez/francrodriguez.prod-infra.git
+        dest: /home/franc
+        single_branch: yes
+        version: main
+    - name: deploy docker website
+      community.docker.docker_compose:
+        project_src: /home/franc/francrodriguez.com-prod
+        files:
+         - docker-compose.yml
